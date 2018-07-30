@@ -1,0 +1,14 @@
+RateLimiting
+
+Background:
+Imagine we’ve a service which is receiving a huge number of requests, but it can only serve a limited number of requests per second. 
+Rate Limiting is process of limting the requests being processed under a limit based on some criteria.
+1.Number of transactions during a certain duration.
+2.Number of failed transactions by an user.
+3.Requests which can be made by a particular ip address.
+
+Why Do we need it?
+1.Mitigate DDOS
+2.Stop Security breach by brute force method.
+
+Above reasons are enough to bring the service down so hence to increase the availability.

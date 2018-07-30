@@ -1,0 +1,11 @@
+Reading list:
+
+
+
+Binary Search
+Over Index:
+Over Range:
+
+
+Usefull for debugging:
+System.out.println(Arrays.deepToString(matrix));--> Print 2d as string
