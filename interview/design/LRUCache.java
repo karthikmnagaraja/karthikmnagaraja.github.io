@@ -1,4 +1,4 @@
-package interview.linkedlist;
+package interview.design;
 
 
 public class LRUCache 

@@ -1,7 +1,9 @@
 package interview.tree;
 
-
-class ConvertBsttoGreaterTree {
+/**
+Inorder but in descnding order so that you can add the value to left tree nodes.
+*/
+public class ConvertBsttoGreaterTree {
    int sum = 0;
     
     public TreeNode convertBST(TreeNode root) {
