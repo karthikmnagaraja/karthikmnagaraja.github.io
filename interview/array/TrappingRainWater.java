@@ -37,19 +37,19 @@ public class TrappingRainWater{
     }
 
     public int trap(int[] a) {
-        if(a.length==0) return 0;
-        int left=0,maxLeft=0,maxRight=0,right=a.length-1, res=0;
-        while(left<right){
-            if(a[left]<=a[right]){
-                if(a[left]>maxLeft) maxLeft=a[left];
-                else res+=maxLeft-a[left];
-                left++;
-            }else{
-                if(a[right]>maxRight)maxRight=a[right];
-                else res+=maxRight-a[right];
-                right--;
+            if(a.length==0) return 0;
+            int left=0,maxLeft=0,maxRight=0,right=a.length-1, res=0;
+            while(left<right){
+                if(a[left]<=a[right]){
+                    if(a[left]>maxLeft) maxLeft=a[left];
+                    else res+=maxLeft-a[left];
+                    left++;
+                }else{
+                    if(a[right]>maxRight)maxRight=a[right];
+                    else res+=maxRight-a[right];
+                    right--;
+                }
             }
-        }
-        return res;
+            return res;
     }
 }
