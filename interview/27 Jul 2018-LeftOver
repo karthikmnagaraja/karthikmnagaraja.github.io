@@ -1,0 +1,317 @@
+27 Jul 2018
+
+Aug 2
+545	Boundary of Binary Tree
+851	Loud and Rich	43.2%	Medium	
+126	Word Ladder II	15.3%	Hard	
+
+	
+
+
+Aug 3
+
+508	Most Frequent Subtree Sum	52.7%	Medium	
+517	Super Washing Machines	36.4%	Hard	
+645	Set Mismatch	39.7%	Easy	
+651	4 Keys Keyboard
+672	Bulb Switcher II
+
+
+Aug 4
+662	Maximum Width of Binary Tree	38.4%	Medium	
+663	Equal Tree Partition
+675	Cut Off Trees for Golf Event	27.3%	Hard	
+776	Split BST
+801	Minimum Swaps To Make Sequences Increasing
+
+
+Aug 5
+218	The Skyline Problem	29.6%	Hard	
+871	Minimum Number of Refueling Stops	25.2%	Hard	
+174	Dungeon Game	24.9%	Hard	
+591	Tag Validator	31.3%	Hard	
+631	Design Excel Sum Formula
+
+
+
+414. Third Maximum Number
+class Solution {
+    public int thirdMax(int[] nums) {
+        Integer first=null,second=null,third=null;
+        
+        for(Integer i:nums){
+            if(i.equals(first)||i.equals(second)||i.equals(third)) continue;
+            if(first==null|| first<i){
+                third=second;
+                second=first;
+                first=i;
+            }
+            else if(second==null||second<i){
+                third=second;
+                second=i;
+            }else if(third==null||third<i){
+                third=i;
+            }
+        }
+        
+        return (third!=null)?third:first;
+    }
+}
+class Solution {
+    public int monotoneIncreasingDigits(int N) {
+        if(N<10) return N;
+        
+        char[] str = String.valueOf(N).toCharArray();
+        int m=str.length;
+        for(int i=str.length-1;i>0;i--){
+            if(str[i]<str[i-1]){
+                m=i;
+                str[i-1]--;
+            }
+        }
+        
+        for(int i=m;i<str.length;i++){
+            str[i]='9';
+        }
+        return Integer.parseInt(new String(str));
+    }
+}
+
+//775. Global and Local Inversions
+class Solution {
+    public boolean isIdealPermutation(int[] A) {
+        for(int i=0;i<A.length;i++){
+            if(Math.abs(A[i]-i)>1) return false;
+        }
+        return true;
+    }
+}
+
+//283. Move Zeroes
+class Solution {
+    public List<Integer> grayCode(int n) {
+        List<Integer> result = new LinkedList<>();
+        for (int i = 0; i < Math.pow(2,n); i++) 
+            result.add(i ^ i/2);
+        return result;
+    }
+}
+//796. Rotate String
+class Solution {
+    public boolean rotateString(String A, String B) {
+        return A.length()==B.length() && (A+A).contains(B);
+    }
+}
+
+//139. Word Break
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        if(s.length()==0) return true;
+        boolean[] words= new boolean[s.length()+1];
+        words[0]=true;
+        for(int i=1;i<s.length()+1;i++){
+             for(int j=0;j<=i;j++){
+                 
+                 if(words[j]&&wordDict.contains(s.substring(j,i))){
+                     words[i]=true;
+                 }
+         }
+        }
+        
+        return words[s.length()];
+    }
+}
+
+//168	Excel Sheet Column Title	27.8%	Easy
+class Solution {
+    public String convertToTitle(int n) {
+        StringBuilder sb=new StringBuilder();
+        while(n!=0){
+            n--;
+            sb.append((char)(n%26+'A'));
+            n/=26;
+        }
+        return sb.reverse().toString();
+    }
+}
+
+class Solution {
+    public boolean canJump(int[] A) {
+    int max = 0, i=0;
+    for(;i<A.length&&i<=max;i++){
+        
+        max = Math.max(A[i]+i,max);
+    }
+    return i==A.length;
+}
+}
+
+class Solution {
+    public int maxRotateFunction(int[] A) {
+        if(A.length==0) return 0;
+        int sum=0,iter=0;
+        for(int i=0;i<A.length;i++){
+            sum+=A[i];
+            iter+=A[i]*i;
+        }
+        int max=iter;
+        for(int i=1;i<A.length;i++){
+            iter=iter-sum+A[i-1]*A.length;
+            max=Math.max(iter,max);
+        }
+        return max;
+    }
+}
+//213	House Robber II	34.7%	Medium	
+class Solution {
+    public int rob(int[] nums) {
+        
+        if(nums.length==1) return nums[0];
+        return Math.max(max(nums,0,nums.length-2),max(nums,1,nums.length-1));
+    }
+    public int max(int[] nums, int start, int end){
+        int a=0,b=0;
+       for (int i=start; i<=end; i++) {
+            if (i % 2 == 0) {
+                a = Math.max(b, a + nums[i]);
+            } else {
+                b = Math.max(a, b + nums[i]);
+            }
+        }
+        return Math.max(a,b);
+    }
+}
+
+class EpiStrings{
+    /**
+    dont use trim() it takes more time
+    */
+    public int myAtoi(String str) {
+         
+        if(str==null||str.length()==0) return 0;
+        long result=0;
+        int index=0;
+        int sign=1;
+        while(index<str.length()&&str.charAt(index)==' '){ index++;}
+        if(index<str.length()&&(str.charAt(index)=='-'||str.charAt(index)=='+')){
+           
+            sign=str.charAt(index)=='-'?-1:1;
+             index++;
+        }
+        while(index<str.length()&&str.charAt(index) >= '0' && str.charAt(index) <= '9') {
+            char digit=str.charAt(index++);
+            
+           result=result*10+sign*(digit-'0');
+            if(result>=Integer.MAX_VALUE||result<=Integer.MIN_VALUE){ 
+                 
+                return sign==1?Integer.MAX_VALUE:Integer.MIN_VALUE;
+            }
+        }
+
+        return (int)result;
+    }
+
+    public String integerToString(int num){
+        StringBuilder sb= new StringBuilder();
+        char sign='';
+        if(num<0) sign='-';
+
+        while(num!=0){
+            sb.append((char)'0'+num%10);
+            num=num/10;
+        }
+
+        sb=sb.reverse();
+        if(sign!='') sb.insert(0,'-');
+
+        return sb.toString();
+    }
+
+    /**
+    letter combinations of a phone number
+    */
+    public List<String> letterCombinations(String digits) {
+          String[] list= new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        LinkedList<String> queue= new LinkedList<String>();
+        if(digits.length()==0) return queue;
+        
+        queue.add("");
+        for(int i=0;i<digits.length();i++){
+            int digit=digits.charAt(i)-'0';
+            int size=queue.size();
+            while(size!=0){
+                String str=queue.removeFirst();
+                
+                for(Character ch:list[digit].toCharArray())
+                    queue.add(str+ch);
+                size--;
+            }
+        }
+        return queue;
+    }
+
+    public String validIPAddress(String IP) {
+        if(validateIp4(IP)) return "IPv4";
+        else if(validateIp6(IP)) return "IPv6";
+        else return "Neither";
+    }
+    
+    public boolean validateIp4(String ip){
+        if(ip.length()>15||ip.endsWith(".")||ip.startsWith(".")) return false;
+        String[] str=ip.split("\\.");
+        if(str.length!=4) return false;
+        for(String s:str){
+            if(s.length()>3||s.length()==0) return false;
+            
+            try{
+                Integer i=Integer.parseInt(s);
+                if(i==0 && s.charAt(0)!='0') return false;
+                if(s.charAt(0)=='0'&&s.length()>1&&i>=0) return false;
+               
+                
+            if(i>255||i<0) return false;
+               }catch(NumberFormatException e){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public boolean validateIp6(String ip){
+        if(ip.length()>39||ip.endsWith(":")||ip.startsWith(":")) return false;
+        String[] str=ip.split(":");
+        if(str.length!=8) return false;
+        for(String s:str){
+            if(s.length()>4||s.length()==0) return false;
+                for(char c:s.toCharArray()){
+                if(!isValid(c)){
+                    System.out.println(c);
+                    return false;}
+                }
+        }
+        return true;
+    }
+    public boolean isValid(char c){
+        if(c<='9'&&c>='0') return true;
+        else if(c<='F'&&c>='A') return true;
+        else if(c<='f'&&c>='a') return true;
+        else return false;
+    }
+    
+
+}
+Backtracking remaining
+126 Word Ladder II          15.2%   Hard    
+44  Wildcard Matching           21.3%   Hard    
+10  Regular Expression Matching         24.4%   Hard    
+140 Word Break II           24.9%   Hard    
+411 Minimum Unique Word Abbreviation            33.8%   Hard    
+425 Word Squares            42.9%   Hard        
+89  Gray Code           43.0%   Medium  
+351 Android Unlock Patterns         44.6%   Medium  
+357 Count Numbers with Unique Digits            46.2%   Medium  
+320 Generalized Abbreviation            46.6%   Medium  
+294 Flip Game II            47.1%   Medium  
+526 Beautiful Arrangement           53.1%   Medium  
+401 Binary Watch            44.8%   Easy    
+784 Letter Case Permutation         

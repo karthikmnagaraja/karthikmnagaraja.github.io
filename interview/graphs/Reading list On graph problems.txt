@@ -1,0 +1,10 @@
+Reading list On graph problems:
+
+Explanation: 
+https://efficientcodeblog.wordpress.com/2017/11/28/topological-sort-dfs-bfs-and-dag/
+
+Implementations Explained really well.
+http://wlcoding.blogspot.com/2015/05/course-schedule.html
+
+More info:
+https://www.hackerearth.com/practice/algorithms/graphs/topological-sort/tutorial/

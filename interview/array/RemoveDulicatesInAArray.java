@@ -7,5 +7,4 @@ public int removeDuplicates(int[] nums) {
             if(nums[i]!=nums[i-1])nums[idx++]=nums[i];
         }
         return idx;
-    }
-]
+}
