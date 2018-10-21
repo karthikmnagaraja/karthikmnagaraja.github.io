@@ -43,6 +43,7 @@ SSL operations consume extra CPU resources. The most CPU-intensive operation is 
  - Reusing SSL session parameters to avoid SSL handshakes for parallel and subsequent connections
 
 **Load Balancing** 
+
 *The following load balancing mechanisms (or methods) are supported in nginx:*
 
  - **round-robin** — requests to the application servers are distributed in a round-robin fashion
